@@ -14,6 +14,18 @@ class LinkedList {
     LNode head;
     LNode tail;
     int size;
+int search(int value) {
+        if (head == null)
+            return-1;
+        LNode temp=head;
+        int idx=0;
+        while (temp.next != null) {
+            if(temp.value==value) return idx;
+            temp=temp.next;
+            idx++;
+        }
+        return -1;
+    }
 
     void addAtHead(int value) {
         LNode temp = new LNode(value);
@@ -65,6 +77,24 @@ class LinkedList {
 
         System.out.println();
     }
+
+    public void insert(int val, int idx) {
+     LNode temp = null;
+        if (idx < 0 || idx > size) {
+            System.out.println("Index out of bounds");
+            return;
+        } else if (idx == 0) addAtHead(val);
+        else if (idx == size) addAtTail(val);
+        else {
+            temp = new LNode(val);
+            temp.next = head;
+            head = temp;
+        }
+        LNode t = new LNode(val);
+        t.next = temp.next;
+        temp.next = t;
+        size++;
+    }
 }
 
 public class LSDataStructure {
@@ -91,5 +121,6 @@ public class LSDataStructure {
         ll.deleteAtHead();
         ll.display();
         System.out.println(ll.size);
+        ll.insert(5,2); ll.display();
     }
 }
