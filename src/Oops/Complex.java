@@ -17,6 +17,10 @@ void add(ComplexNumber z) {
     this.x+=z.x;
     this.y+=z.y;
     }
+    void multiply(ComplexNumber z) {
+    x=x*z.x-y*z.y;
+    y=y*z.y+z.x*z.x;
+    }
 }
 public class Complex {
     public static void main(String[] args){
